@@ -80,8 +80,17 @@ export default function OrdersScreen() {
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.headerTop}>
-          <ShoppingBag size={28} color={colors.secondary} />
-          <Text style={styles.title}>{getScreenTitle()}</Text>
+          <View style={styles.headerLeft}>
+            <TouchableOpacity 
+              style={styles.backButton}
+              onPress={() => router.back()}
+              activeOpacity={0.7}
+            >
+              <ArrowLeft size={24} color={colors.primary} />
+            </TouchableOpacity>
+            <ShoppingBag size={28} color={colors.secondary} />
+            <Text style={styles.title}>{getScreenTitle()}</Text>
+          </View>
           {readyOrders.length > 0 && !isSeller && (
             <View style={styles.notificationBadge}>
               <Bell size={20} color={colors.primary} />
@@ -284,14 +293,25 @@ const createStyles = (colors: any) => StyleSheet.create({
   headerTop: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     marginBottom: 12,
+  },
+  headerLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+  },
+  backButton: {
+    padding: 8,
+    marginRight: 12,
+    borderRadius: 8,
+    backgroundColor: colors.background,
   },
   title: {
     fontSize: 24,
     fontFamily: 'Inter-Bold',
     color: colors.secondary,
     marginLeft: 12,
-    flex: 1,
   },
   notificationBadge: {
     flexDirection: 'row',
