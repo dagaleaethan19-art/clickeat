@@ -149,85 +149,85 @@ export default function DashboardScreen() {
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
-      <View style={styles.header}>
-        <View style={styles.headerContent}>
-          <View style={styles.headerTop}>
-            <View style={styles.titleSection}>
-              <Text style={styles.title}>My Dashboard</Text>
-              <Text style={styles.subtitle}>Track your food ordering journey</Text>
-            </View>
-            {analytics.readyOrders > 0 && (
-              <View style={styles.notificationBadge}>
-                <Package size={20} color="#F59E0B" />
-                <Text style={styles.badgeText}>{analytics.readyOrders}</Text>
-              </View>
-            )}
-          </View>
-          
-          {/* Quick Stats Row */}
-          <ScrollView
-            horizontal 
-            showsHorizontalScrollIndicator={false} 
-            style={styles.quickStatsContainer}
-            contentContainerStyle={styles.quickStatsContent}
-          >
-            {quickStats.map((stat, index) => (
-              <View
-                key={index}
-                style={[
-                  styles.quickStatCard,
-                  stat.isAlert && styles.alertQuickStatCard
-                ]}
-              >
-                <stat.icon size={18} color={stat.color} />
-                <Text style={[styles.quickStatValue, stat.isAlert && { color: stat.color }]}>
-                  {stat.value}
-                </Text>
-                <Text style={[styles.quickStatLabel, stat.isAlert && { color: stat.color }]}>
-                  {stat.label}
-                </Text>
-              </View>
-            ))}
-          </ScrollView>
-        </View>
-      </View>
-
-      {/* Period Filter */}
-      <View style={styles.periodWrapper}>
-        <ScrollView 
-          horizontal 
-          showsHorizontalScrollIndicator={false} 
-          style={styles.periodContainer}
-          contentContainerStyle={styles.periodContent}
-        >
-          {periods.map((period) => (
-            <TouchableOpacity
-              key={period.key}
-              style={[
-                styles.periodButton,
-                selectedPeriod === period.key && styles.selectedPeriodButton
-              ]}
-              onPress={() => setSelectedPeriod(period.key)}
-              activeOpacity={0.7}
-            >
-              <Text style={[
-                styles.periodText,
-                selectedPeriod === period.key && styles.selectedPeriodText
-              ]}>
-                {period.label}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
-      </View>
-
-      {/* Main Content */}
       <ScrollView 
         style={styles.scrollView} 
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
         bounces={true}
       >
+        {/* Header */}
+        <View style={styles.header}>
+          <View style={styles.headerContent}>
+            <View style={styles.headerTop}>
+              <View style={styles.titleSection}>
+                <Text style={styles.title}>My Dashboard</Text>
+                <Text style={styles.subtitle}>Track your food ordering journey</Text>
+              </View>
+              {analytics.readyOrders > 0 && (
+                <View style={styles.notificationBadge}>
+                  <Package size={20} color="#F59E0B" />
+                  <Text style={styles.badgeText}>{analytics.readyOrders}</Text>
+                </View>
+              )}
+            </View>
+            
+            {/* Quick Stats Row */}
+            <ScrollView
+              horizontal 
+              showsHorizontalScrollIndicator={false} 
+              style={styles.quickStatsContainer}
+              contentContainerStyle={styles.quickStatsContent}
+            >
+              {quickStats.map((stat, index) => (
+                <View
+                  key={index}
+                  style={[
+                    styles.quickStatCard,
+                    stat.isAlert && styles.alertQuickStatCard
+                  ]}
+                >
+                  <stat.icon size={18} color={stat.color} />
+                  <Text style={[styles.quickStatValue, stat.isAlert && { color: stat.color }]}>
+                    {stat.value}
+                  </Text>
+                  <Text style={[styles.quickStatLabel, stat.isAlert && { color: stat.color }]}>
+                    {stat.label}
+                  </Text>
+                </View>
+              ))}
+            </ScrollView>
+          </View>
+        </View>
+
+        {/* Period Filter */}
+        <View style={styles.periodWrapper}>
+          <ScrollView 
+            horizontal 
+            showsHorizontalScrollIndicator={false} 
+            style={styles.periodContainer}
+            contentContainerStyle={styles.periodContent}
+          >
+            {periods.map((period) => (
+              <TouchableOpacity
+                key={period.key}
+                style={[
+                  styles.periodButton,
+                  selectedPeriod === period.key && styles.selectedPeriodButton
+                ]}
+                onPress={() => setSelectedPeriod(period.key)}
+                activeOpacity={0.7}
+              >
+                <Text style={[
+                  styles.periodText,
+                  selectedPeriod === period.key && styles.selectedPeriodText
+                ]}>
+                  {period.label}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </View>
+
         {/* Analytics Cards */}
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Your Food Journey</Text>
@@ -496,7 +496,6 @@ const createStyles = (colors: any) => StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingTop: 8,
     paddingBottom: 120,
   },
   sectionHeader: {
