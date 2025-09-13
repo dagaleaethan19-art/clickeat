@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity, Alert } from 'react-native';
+import { router } from 'expo-router';
 import { Calendar, Clock, CircleCheck as CheckCircle, ShoppingBag, Bell, Package, ArrowLeft } from 'lucide-react-native';
 import ReservationCard from '@/components/ReservationCard';
 import { useTheme } from '@/contexts/ThemeContext';
